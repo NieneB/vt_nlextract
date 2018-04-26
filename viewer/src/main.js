@@ -121,5 +121,5 @@ function goDrieD(){
 
 function goFlat(){
   map.setPaintProperty('pand', 'fill-extrusion-height', 0);
-  map.setPaintProperty('pand', 'fill-extrusion-opacity', 0);
+  map.setPaintProperty('pand', 'fill-extrusion-opacity', 1);
 };

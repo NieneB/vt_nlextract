@@ -33,21 +33,9 @@
             "source-layer": "perceel",
             "type": "fill",
             "paint":{
-                "fill-color":"#333999",
+                "fill-color":"#808080",
                 "fill-outline-color": "#000",
                 "fill-opacity":0.5
-            }
-        },
-        {
-            "id": "perceel-select",
-            "source": "bliksem",
-            "source-layer": "perceel",
-            "type": "fill",
-            "filter":["==","perceelnummer", ""],
-            "paint": {
-                "fill-color": "#fff000",
-                "fill-outline-color": "#000",
-                "fill-opacity": 0.8
             }
         },
         {
@@ -65,16 +53,16 @@
                         1200, "#e6b03d",
                         1800, "#e6b03d",
                         1900, "#3de66d",
-                        2001, "#3de6b1",
-                        2002, "#22ecf0",
-                        2003, "#14b1fd",
-                        2004, "#3d73e6",
-                        2005, "#123a8f",
-                        2006, "#ce2f7e",
+                        1930, "#3de6b1",
+                        1950, "#22ecf0",
+                        1960, "#14b1fd",
+                        1970, "#3d73e6",
+                        1980, "#123a8f",
+                        1990, "#ce2f7e",
                         2007, "#ff4d4d",
                         2018, "#ff0000"
                         ],
-                "fill-extrusion-opacity": 0.5
+                "fill-extrusion-opacity": 1
             }
         },
         {
@@ -126,6 +114,22 @@
                 "text-color": "#000",
                 "text-halo-width": 3,
                 "text-halo-color": "rgba(255,255,255,0.8)"
+            }
+        },
+        {
+            "id": "perceel-select",
+            "source": "bliksem",
+            "source-layer": "perceel",
+            "type": "fill",
+            "filter": [
+                "==",
+                "perceelnummer",
+                ""
+            ],
+            "paint": {
+                "fill-color": "#fff000",
+                "fill-outline-color": "#000",
+                "fill-opacity": 0.8
             }
         }
     ]
