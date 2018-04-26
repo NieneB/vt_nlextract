@@ -4,11 +4,12 @@ services:
     image: niene/postgis:2.4-10 
     env_file: .env
     ports:
-        - 54328:5432
+        - 54326:5432
   psqlclient:
-    image: webmapper/psql
+    image: niene/psql:9.6
     volumes:
         - "${HOST_DIR}/src:/workdir"
+        - "${HOST_DATA_DIR}:${DATA_DIR}"
     env_file: .env
     depends_on: 
         - postgres
@@ -35,7 +36,7 @@ services:
     volumes:
         - "${HOST_DATA_DIR}:${DATA_DIR}"
         - "${HOST_DATA_TILE_DIR}:/tiles"
-        -"${HOST_DIR}/config:/config"
+        - "${HOST_DIR}/config:/config"
     env_file: .env
     depends_on: 
         - postgres
