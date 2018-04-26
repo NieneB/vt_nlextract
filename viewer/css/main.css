@@ -1,0 +1,161 @@
+/*DOM basic styles*/
+html, body {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased; 
+  font-family: sans-serif;
+  height: 100%;
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  webkit-overflow-scrolling: auto;
+  position: absolute;
+  color: #000;
+}
+
+#logo{
+  position: fixed;
+  bottom:0px;
+  left:0px;
+  margin:10px;
+  z-index: 100;
+  height: 60px;
+}
+#main{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding:0;
+}
+
+/* MAP CANVAS & related styles */
+#map { 
+  postion:fixed;
+  height: 100vh;
+  left:0px;
+  top:0px;
+  bottom:0px;
+  width: 100%;
+  background-color: #f4f4f4;
+  cursor: move;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#content{
+  position:fixed;
+  right:0px;
+  top:0px;
+  width: 0%;
+  height:100vh;
+  font-size: 10pt;
+  background-color: #fefefe;
+  padding:0px 20px 0px;
+  text-align: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+
+#info, #info2{
+  text-align: left;
+  padding:2px;
+  margin:auto;
+}
+th{
+  background-color: #939393;
+}
+td{
+  background-color: #f2f2f2;
+  padding:4px;
+}
+
+rect{
+  display: inline-block;
+  background-color: #f2f2f2;
+  height: 30px;
+  width: 100px;
+  display: inline-block;
+}
+
+.hidden{
+  display: none;
+}
+
+/*================================================*/
+/*MAP PROGRESS LOADER*/
+
+#tooltip{
+  z-index: 200;
+  float: left;
+  position: fixed;
+  margin:7px;
+  top: 100px;
+  /*border:3px solid #73AD21;*/
+}
+
+/*turning loader*/
+.loader {
+    border: 10px solid rgba(0,0,0,0); /* Light grey */
+    border-top: 10px solid #000; /* Blue */
+    border-bottom: 10px solid #000;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    animation: spin 2s linear infinite;
+}
+/*animation loader*/
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/*--------------------------------------------------------*/
+
+.toggle-switch {
+  background: #ccc;
+  width: 80px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 3px;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 15px;
+  cursor: pointer;
+}
+
+#toggler{
+    background-color: blue;
+    display: block;
+    width: 40px;
+    height: 30px;
+    background-color: rgb(0,155,0);
+    border-radius: 3px;
+    margin-left: -3px;
+    margin-right: -3px;
+    transition: all 1s ease-in-out transform 2s;
+}
+
+.active{
+  color: rgb(0,155,0);
+  font-weight: bold;
+  padding: 0px !important;
+}
+
+#toggle-label1, #toggle-label2 {
+  display: inline-block;
+  line-height: 30px;
+  padding:4px 8px;
+}
+
+
+.left{
+  margin-left: -3px;
+  float:left;
+  transition: all 1s ease-in-out transform 2s;
+}
+.right{
+  margin-right: -3px;
+  float: right;
+  transition: all 1s ease-in-out transform 2s;
+}
