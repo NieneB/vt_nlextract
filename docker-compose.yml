@@ -1,0 +1,46 @@
+version: '2.2'
+services:
+  postgres:
+    image: niene/postgis:2.4-10 
+    env_file: .env
+    ports:
+        - 54328:5432
+  psqlclient:
+    image: webmapper/psql
+    volumes:
+        - "${HOST_DIR}/src:/workdir"
+    env_file: .env
+    depends_on: 
+        - postgres
+    environment:
+        - PGHOST=postgres
+    links:
+        - postgres
+  gdal:
+    image: geodata/gdal:2.1.3
+    volumes:
+        - "${HOST_DIR}/src:/workdir"
+        - "${HOST_DATA_DIR}:${DATA_DIR}"
+    env_file: .env
+    depends_on: 
+        - postgres
+    environment:
+        - PGHOST=postgres
+    links:
+        - postgres
+  t_rex: 
+    image: sourcepole/t-rex
+    ports:
+        - 6767:6767
+    volumes:
+        - "${HOST_DATA_DIR}:${DATA_DIR}"
+        - "${HOST_DATA_TILE_DIR}:/tiles"
+        -"${HOST_DIR}/config:/config"
+    env_file: .env
+    depends_on: 
+        - postgres
+    environment:
+        - PGHOST=postgres
+    links:
+        - postgres
+    
