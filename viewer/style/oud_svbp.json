@@ -11,13 +11,6 @@
             ],
             "tileSize": 256
         },
-        "nlextract":{
-            "type": "vector",
-            "scheme": "tile",
-            "tiles": [
-                "http://localhost:6767/perceel/{z}/{x}/{y}.pbf"
-            ]
-        },
         "bliksem": {
             "type": "vector",
             "scheme": "tile",
