@@ -12,58 +12,62 @@ default = true
 # Predefined grids: web_mercator, wgs84
 predefined = "web_mercator"
 
-[[tileset]]
-name = "annotatie"
-extent = [3.38441, 50.73488, 10.08120, 55.02811]
-[[tileset.layer]]
-name = "annotatie"
-table_name = "latest.annotatie"
-geometry_field = "wkb_geometry"
-geometry_type = "POINT"
-srid = 28992
+#[[tileset]]
+#name = "annotatie"
+#extent = [3.38441, 50.73488, 10.08120, 55.02811]
+#[[tileset.layer]]
+#name = "annotatie"
+#table_name = "latest.annotatie"
+#geometry_field = "wkb_geometry"
+#geometry_type = "POINT"
+#srid = 28992
 #fid_field = "id"
 #tile_size = "4096"
-buffer_size = 0
-query_limit = 1000
+#buffer_size = 0
+#query_limit = 1000
 #[[tileset.layer.query]]
 #sql = """SELECT ST_Transform(wkb_geometry,3857) AS wkb_geometry,"ogc_fid","gml_id","namespace","lokaalid","classificatiecode","rotatiehoek","tekst" FROM latest.annotatie WHERE wkb_geometry && !bbox!"""
 
-[[tileset]]
-name = "bebouwing"
-extent = [3.38429, 50.73473, 7.24079, 53.52570]
-[[tileset.layer]]
-name = "bebouwing"
-table_name = "latest.bebouwing"
-geometry_field = "wkb_geometry"
-geometry_type = "LINESTRING"
-srid = 28992
+#[[tileset]]
+#name = "bebouwing"
+#extent = [3.38429, 50.73473, 7.24079, 53.52570]
+#[[tileset.layer]]
+#name = "bebouwing"
+#table_name = "latest.bebouwing"
+#geometry_field = "wkb_geometry"
+#geometry_type = "LINESTRING"
+#srid = 28992
 #fid_field = "id"
 #tile_size = "4096"
-buffer_size = 0
-simplify = true
-query_limit = 1000
+#buffer_size = 0
+#simplify = true
+#query_limit = 1000
 #[[tileset.layer.query]]
 #sql = """SELECT ST_Transform(wkb_geometry,3857) AS wkb_geometry,"ogc_fid","gml_id","namespace","lokaalid","classificatiecode","bron","kwaliteit","objectdatum","zichtbaarheidscode" FROM latest.bebouwing WHERE wkb_geometry && !bbox!"""
 
-[[tileset]]
-name = "perceel"
-extent = [3.25802, 50.73234, 7.24896, 53.68641]
-[[tileset.layer]]
-name = "perceel"
-table_name = "latest.perceel"
-geometry_field = "plaatscoordinaten"
-geometry_type = "POINT"
-srid = 28992
+#[[tileset]]
+#name = "perceel"
+#extent = [3.25802, 50.73234, 7.24896, 53.68641]
+#[[tileset.layer]]
+#name = "perceel"
+#table_name = "latest.perceel"
+#geometry_field = "plaatscoordinaten"
+#geometry_type = "POINT"
+#srid = 28992
 #fid_field = "id"
 #tile_size = "4096"
-buffer_size = 0
-query_limit = 1000
+#buffer_size = 0
+#query_limit = 1000
 #[[tileset.layer.query]]
+#minzoom=12
+#maxzoom=14
 #sql = """SELECT ST_Transform(plaatscoordinaten,3857) AS plaatscoordinaten,"ogc_fid","gml_id","namespace","lokaalid","logischtijdstipontstaan","gemeente","sectie","perceelnummer","waarde","perceelnummerrotatie","deltax","deltay","begrenzing" FROM latest.perceel WHERE plaatscoordinaten && !bbox!"""
 
 [[tileset]]
 name = "perceel"
-extent = [3.11744, 50.72926, 7.25152, 53.73674]
+minzoom=12
+maxzoom=16
+extent = [3.25, 50.72926, 7.2, 53.73674]
 [[tileset.layer]]
 name = "perceel"
 table_name = "latest.perceel"
@@ -72,20 +76,22 @@ geometry_type = "POLYGON"
 srid = 28992
 #fid_field = "id"
 #tile_size = "4096"
-buffer_size = 1
-simplify = true
-query_limit = 1000
-#[[tileset.layer.query]]
-#sql = """SELECT ST_Transform(begrenzing,3857) AS begrenzing,"ogc_fid","gml_id","namespace","lokaalid","logischtijdstipontstaan","gemeente","sectie","perceelnummer","waarde","perceelnummerrotatie","deltax","deltay","plaatscoordinaten" FROM latest.perceel WHERE begrenzing && !bbox!"""
+#buffer_size = 10
+#simplify = true
+#query_limit = 1000
+[[tileset.layer.query]]
+minzoom=15
+maxzoom=20
+sql = """SELECT ST_Transform(begrenzing,3857) AS begrenzing,"ogc_fid","gml_id","namespace","lokaalid","logischtijdstipontstaan","gemeente","sectie","perceelnummer","waarde","perceelnummerrotatie","deltax","deltay" FROM latest.perceel WHERE begrenzing && !bbox!"""
 
 [cache.file]
-base = "/tiles"
+base = "/var/data/out/tiles"
 #baseurl = "http://example.com/tiles"
 
 [webserver]
-# Bind address. Use 0.0.0.0 to listen on all adresses.
-bind = "127.0.0.1"
-#port = 6767
-#threads = 4
+#Bind address. Use 0.0.0.0 to listen on all adresses.
+bind = "0.0.0.0"
+port = 6767
+threads = 4
 cache_control_max_age = 43200
 
