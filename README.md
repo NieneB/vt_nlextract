@@ -50,4 +50,6 @@ threads = 4
 
 ## T_rex cache
 
+In order to create the cache and mount in to the host, the `generate` command has to be run as user `root`. The t_rex Dockerfile runs as `www-data`... 
+
     docker-compose run --rm --user root t_rex generate --config /config/config.toml
