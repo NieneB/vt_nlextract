@@ -23,7 +23,9 @@ docker-compose run --rm  t_rex t_rex genconfig --dbconn postgresql://user:pass@l
 
 ## Trex serve
 
-docker-compose run --rm t_rex t_rex serve --config /config/config.toml
+docker-compose run --rm t_rex  serve --config /config/config.toml
 
 
 ## Trex cache
+
+docker-compose run --rm --user root t_rex generate --config /config/config.toml
