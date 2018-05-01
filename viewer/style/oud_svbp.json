@@ -15,7 +15,7 @@
             "type": "vector",
             "scheme": "tile",
             "tiles": [
-                "https://services.opengeo.nl/perceel/maps/zoning/{z}/{x}/{y}.vector.pbf"
+                "http://176.9.0.106:6767/perceel/{z}/{x}/{y}.pbf"
             ]
         }
     },

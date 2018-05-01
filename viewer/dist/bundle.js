@@ -6,7 +6,7 @@ var d3 = require('d3');
 var options = {
   container: "map",
   hash: true,
-  style:'./style/oud_svbp.json',
+  style:'./style/style.json',
   zoom: 10,
   pitch: 0,
   bearing: 0,
@@ -17,12 +17,12 @@ var options = {
 // INITIALIZE MAP
 var map = new mapboxgl.Map(options);
 
-// // MAP ATTRIBUTE CONTROLL
-// var att = new mapboxgl.AttributionControl();
-// att._updateAttributions = function(){
-//   this._container.innerHTML = "&copy; <a href=\'http://webmapper.net\' target=\'_blank\'>Webmapper</a> | <a href=\'http://www.mapbox.com\' target=\'_blank\'>Mapbox</a>"
-// };
-// map.addControl(att, 'bottom-left');
+// MAP ATTRIBUTE CONTROLL
+var att = new mapboxgl.AttributionControl();
+att._updateAttributions = function(){
+  this._container.innerHTML = "&copy; <a href=\'http://webmapper.net\' target=\'_blank\'>Webmapper</a> | <a href=\'http://www.mapbox.com\' target=\'_blank\'>Mapbox</a>"
+};
+map.addControl(att, 'bottom-left');
 
 document.addEventListener('touchmove', function(event) {
   event.preventDefault();
@@ -68,7 +68,7 @@ isloaded();
 
 // POSTCODE highlight
 //Adding hover effect
-map.on("mousemove", "perceel", function (e) {
+map.on("click", "perceel", function (e) {
   // panel.innerHTML = e.features[0].properties.name;
   // console.log(e)
   map.setFilter("perceel-select", ["==", "perceelnummer", e.features[0].properties.perceelnummer]);
@@ -116,7 +116,7 @@ drieD.on("keypress", function(){
 });
 
 function goDrieD(){
-  map.setPaintProperty('pand', 'fill-extrusion-height', 15);
+  map.setPaintProperty('pand', 'fill-extrusion-height', 10);
   map.setPaintProperty('pand', 'fill-extrusion-opacity', 0.8);
 };
 
