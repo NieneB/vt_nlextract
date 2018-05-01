@@ -1,0 +1,136 @@
+{
+    "version": 8,
+    "name": "data",
+    "glyphs": "https://services.opengeo.nl/zonekaart/fonts/{fontstack}/{range}.pbf",
+    "sources": {
+        "raster-tiles": {
+            "type": "raster",
+            "scheme": "xyz",
+            "tiles": [
+                "https://geodata.nationaalgeoregister.nl/tiles/service/wmts/brtachtergrondkaart/EPSG:3857/{z}/{x}/{y}.png"
+            ],
+            "tileSize": 256
+        },
+        "bliksem": {
+            "type": "vector",
+            "scheme": "tile",
+            "tiles": [
+                "http://176.9.0.106:6767/perceel/{z}/{x}/{y}.pbf"
+            ]
+        }
+    },
+    "layers": [
+        {
+            "id": "brtachtergrondkaart",
+            "type": "raster",
+            "source": "raster-tiles",
+            "minzoom": 0,
+            "maxzoom": 20
+        },
+        {
+            "id": "perceel",
+            "source":"bliksem",
+            "source-layer": "perceel",
+            "type": "fill",
+            "paint":{
+                "fill-color":"#808080",
+                "fill-outline-color": "#000",
+                "fill-opacity":0.5
+            }
+        },
+        {
+            "id": "pand",
+            "source": "bliksem",
+            "source-layer": "pand",
+            "type": "fill-extrusion",
+            "paint": {
+                "fill-extrusion-height": 0,
+                "fill-extrusion-color": [
+                        "interpolate",
+                        ["cubic-bezier", 0.8, 0.3, 0.3, 0.8 ], 
+                        ["number", [ "get", "bouwjaar"]],
+                        0,"#808080",
+                        1200, "#e6b03d",
+                        1800, "#e6b03d",
+                        1900, "#3de66d",
+                        1930, "#3de6b1",
+                        1950, "#22ecf0",
+                        1960, "#14b1fd",
+                        1970, "#3d73e6",
+                        1980, "#123a8f",
+                        1990, "#ce2f7e",
+                        2007, "#ff4d4d",
+                        2018, "#ff0000"
+                        ],
+                "fill-extrusion-opacity": 1
+            }
+        },
+        {
+            "id":"adres",
+            "source": "bliksem",
+            "source-layer": "adres",
+            "type":"circle",
+            "paint":{
+                "circle-radius": 5,
+                "circle-color": "#ff0000"
+            }
+        },
+        {
+            "id": "zones-text",
+            "type": "symbol",
+            "source": "bliksem",
+            "source-layer": "adres",
+            "layout": {
+                "text-field": "{huisnummer}",
+                "text-font": [
+                    "Open Sans Regular"
+                ],
+                "text-size": {
+                    "stops": [
+                        [
+                            0,
+                            0
+                        ],
+                        [
+                            5,
+                            6
+                        ],
+                        [
+                            9,
+                            12
+                        ],
+                        [
+                            10,
+                            15
+                        ],
+                        [
+                            12,
+                            20
+                        ]
+                    ]
+                }
+            },
+            "paint": {
+                "text-color": "#000",
+                "text-halo-width": 3,
+                "text-halo-color": "rgba(255,255,255,0.8)"
+            }
+        },
+        {
+            "id": "perceel-select",
+            "source": "bliksem",
+            "source-layer": "perceel",
+            "type": "fill",
+            "filter": [
+                "==",
+                "perceelnummer",
+                ""
+            ],
+            "paint": {
+                "fill-color": "#fff000",
+                "fill-outline-color": "#000",
+                "fill-opacity": 0.8
+            }
+        }
+    ]
+}

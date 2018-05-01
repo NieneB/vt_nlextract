@@ -1,0 +1,16 @@
+{
+  "name": "omgevingswetviewer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Niene",
+  "license": "ISC",
+  "dependencies": {
+    "d3": "^4.13.0",
+    "mapbox-gl": "^0.44.1"
+  },
+  "devDependencies": {},
+  "description": ""
+}
