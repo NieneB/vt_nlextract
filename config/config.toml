@@ -70,22 +70,22 @@ maxzoom=16
 extent = [3.25, 50.72926, 7.2, 53.73674]
 [[tileset.layer]]
 name = "perceel"
-table_name = "latest.perceel"
-geometry_field = "begrenzing"
+table_name = "perceel"
+geometry_field = "geom"
 geometry_type = "POLYGON"
-srid = 28992
+srid = 3857
 #fid_field = "id"
-#tile_size = "4096"
-#buffer_size = 10
-#simplify = true
+#tile_size = 4096
+buffer_size = 10
+simplify = true
 #query_limit = 1000
 [[tileset.layer.query]]
-minzoom=15
+minzoom=14
 maxzoom=20
-sql = """SELECT ST_Transform(begrenzing,3857) AS begrenzing,"ogc_fid","gml_id","namespace","lokaalid","logischtijdstipontstaan","gemeente","sectie","perceelnummer","waarde","perceelnummerrotatie","deltax","deltay" FROM latest.perceel WHERE begrenzing && !bbox!"""
+sql = """SELECT geom,"ogc_fid","gml_id","gemeente","sectie","perceelnummer","waarde","perceelnummerrotatie" FROM perceel WHERE geom && !bbox!"""
 
 [cache.file]
-base = "/var/data/out/tiles"
+base = "/var/data/out"
 #baseurl = "http://example.com/tiles"
 
 [webserver]
@@ -93,5 +93,5 @@ base = "/var/data/out/tiles"
 bind = "0.0.0.0"
 port = 6767
 threads = 4
-cache_control_max_age = 43200
+#cache_control_max_age = 43200
 
