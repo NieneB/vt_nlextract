@@ -6,17 +6,23 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Required CSS -->
-	<link rel="stylesheet" href="css/mapboxgl.css">
 	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/mapboxgl.css">
 </head>
 <body>
-	<div id="tooltip">
-		<div class="loader"></div>
+	<!-- SEARCH BAR -->
+	<div id="search_bar">
+		<div id="ttinput">
+			<input class="typeahead" type="text" placeholder="Mijn woonplaats" />
+		</div>
 	</div>
-	<div class="main">
-		<div id="logo"> <a href="http://webmapper.net"><img src="img/logo.svg" height="60px"></a></div>
-		<div id="map"></div>
+	<!-- MAP PROGRES LOADER -->
+	<div class="tooltip" id="tooltip">
+		<div class="loader" id="loader"></div>
+		<span class="tooltiptext">style is loading.. </span>
 	</div>
+	<div id="logo"> <a href="http://webmapper.net"><img src="img/logo.svg" height="60px"></a></div>
+	<div id="map"></div>
 	<script type="text/javascript" src="dist/bundle.js"></script>
 </body>
 </html>

@@ -12,6 +12,7 @@ html, body {
   webkit-overflow-scrolling: auto;
   position: absolute;
   color: #000;
+  cursor: pointer;
 }
 
 #logo{
@@ -22,15 +23,10 @@ html, body {
   z-index: 100;
   height: 60px;
 }
-#main{
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding:0;
-}
 
 /* MAP CANVAS & related styles */
 #map { 
+  z-index:1;
   postion:fixed;
   height: 100vh;
   left:0px;
@@ -41,7 +37,7 @@ html, body {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
-
+/* 
 #content{
   position:fixed;
   right:0px;
@@ -54,9 +50,9 @@ html, body {
   text-align: center;
   overflow-y: scroll;
   overflow-x: hidden;
-}
+} */
 
-
+/* 
 #info, #info2{
   text-align: left;
   padding:2px;
@@ -80,6 +76,115 @@ rect{
 
 .hidden{
   display: none;
+} */
+
+/*================================================*/
+/*SEARCH BAR*/
+#search_bar{
+  z-index: 100;
+	position: absolute;
+	top: 10px;
+	left: 50px;
+}
+
+span.twitter-typeahead .tt-menu,
+span.twitter-typeahead .tt-dropdown-menu {
+	position: absolute;
+	top: 10px;
+	left: 50px;
+	z-index: 1000;
+	display: none;
+	float: left;
+	min-width: 200px;
+	padding: 5px 0;
+	margin: 2px 0 0;
+	list-style: none;
+	font-size: 14px;
+	text-align: left;
+	background-color: #e6e6e6;
+	border: 1px solid #cccccc;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 4px;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	background-clip: padding-box;
+}
+span.twitter-typeahead .tt-suggestion {
+	display: block;
+	padding: 3px 20px;
+	clear: both;
+	font-weight: normal;
+	line-height: 1.42857143;
+	color: #333333;
+	white-space: nowrap;
+}
+span.twitter-typeahead .tt-suggestion.tt-cursor,
+span.twitter-typeahead .tt-suggestion:hover,
+span.twitter-typeahead .tt-suggestion:focus {
+	color: #15a5bd;
+	text-decoration: none;
+	outline: 0;
+}
+.input-group.input-group-lg span.twitter-typeahead .form-control {
+	height: 46px;
+	padding: 10px 16px;
+	font-size: 18px;
+	line-height: 1.3333333;
+	border-radius: 6px;
+}
+.input-group.input-group-sm span.twitter-typeahead .form-control {
+	height: 30px;
+	padding: 5px 10px;
+	font-size: 12px;
+	line-height: 1.5;
+	border-radius: 3px;
+}
+span.twitter-typeahead {
+	width: 100%;
+}
+.input-group span.twitter-typeahead {
+	display: block !important;
+	height: 34px;
+}
+.input-group span.twitter-typeahead .tt-menu,
+.input-group span.twitter-typeahead .tt-dropdown-menu {
+	top: 32px !important;
+}
+.input-group span.twitter-typeahead:not(:first-child):not(:last-child) .form-control {
+	border-radius: 0;
+}
+.input-group span.twitter-typeahead:first-child .form-control {
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+.input-group span.twitter-typeahead:last-child .form-control {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.input-group.input-group-sm span.twitter-typeahead {
+	height: 30px;
+}
+.input-group.input-group-sm span.twitter-typeahead .tt-menu,
+.input-group.input-group-sm span.twitter-typeahead .tt-dropdown-menu {
+	top: 30px !important;
+}
+.input-group.input-group-lg span.twitter-typeahead {
+	height: 46px;
+}
+.input-group.input-group-lg span.twitter-typeahead .tt-menu,
+.input-group.input-group-lg span.twitter-typeahead .tt-dropdown-menu {
+	top: 46px !important;
+}
+
+.tt-dataset{
+	color:#ff4d4d;
+}
+.tt-highlight{
+	color:#15a5bd;
 }
 
 /*================================================*/
@@ -93,10 +198,9 @@ rect{
   top: 100px;
   /*border:3px solid #73AD21;*/
 }
-
 /*turning loader*/
 .loader {
-    border: 10px solid rgba(0,0,0,0); /* Light grey */
+   border: 10px solid rgba(0,0,0,0); /* Light grey */
     border-top: 10px solid #000; /* Blue */
     border-bottom: 10px solid #000;
     border-radius: 50%;
@@ -110,3 +214,20 @@ rect{
     100% { transform: rotate(360deg); }
 }
 
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    color: #000;
+    text-align: center;
+    padding: 5px 0;
+    position: absolute;
+    top: -3px;
+    left: 110%; 
+    z-index: 101;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}

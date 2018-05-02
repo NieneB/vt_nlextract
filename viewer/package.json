@@ -9,7 +9,10 @@
   "license": "ISC",
   "dependencies": {
     "d3": "^4.13.0",
-    "mapbox-gl": "^0.44.1"
+    "mapbox-gl": "^0.44.1",
+    "bloodhound-js": "^1.2.2",
+    "typeahead.js": "^0.11.1",
+    "jquery": "^3.2.1"
   },
   "devDependencies": {},
   "description": ""
