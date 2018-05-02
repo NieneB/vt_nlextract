@@ -60,7 +60,9 @@ CREATE INDEX perceel_geom_idx ON perceel USING gist(geom);
 
 To generate a config file from all the data in de postgres database run `genconfig`. Replace the `dbconn` string with your own database connections.
 
-    docker run --rm sourcepole/t-rex genconfig --dbconn postgresql://user:pass@localhost/dbname > `pwd`/config/config_gen.toml
+``` bash
+docker run --rm sourcepole/t-rex genconfig --dbconn postgresql://user:pass@localhost/dbname > `pwd`/config/config_gen.toml
+```
 
 Manually edit this config file so it is to your needs. Make sure to set the cache and network settings correctly for accessing the server and data from outside the docker container:
 
@@ -77,12 +79,12 @@ port = 6767
 threads = 4
 #cache_control_max_age = 43200
 ```
-Have a look at our configuration file for percelen: [config/config.toml](/config/congif.toml)
+Have a look at our configuration file for percelen: [config/config.toml](https://github.com/NieneB/vt_nlextract/blob/master/config/config.toml)
 
 ## T_rex serve
 
 ``` bash
-    docker run --rm -d -p 6767:6767 -v `pwd`/config:/config -v `pwd`/tiles:/var/data/out/tiles --name t-rex-nlextract sourcepole/t-rex serve --config /config/config.toml
+docker run --rm -d -p 6767:6767 -v `pwd`/config:/config -v `pwd`/tiles:/var/data/out/tiles --name t-rex-nlextract sourcepole/t-rex serve --config /config/config.toml
 ```
 
 Tiles available at http://localhost:6767/perceel/{z}/{x}/{y}.pbf
@@ -126,3 +128,9 @@ docker-compose logs -f t_rex
 # to generate a cache
 docker-compose run --rm --user root t_rex generate --config /config/config.toml
 ```
+
+# Viewer
+
+In the folder [/viewer](https://github.com/NieneB/vt_nlextract/tree/master/viewer) you will find a full working MapboxGL-js example. 
+
+Download or clone this repro and run `index.html`. It will work with your own t-rex tile server if you have it running at `http://localhost:6767/perceel/{z}/{x}/{y}.pbf`
