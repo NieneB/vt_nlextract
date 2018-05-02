@@ -85,28 +85,3 @@ map.on('click', 'perceel', function (e) {
     .setHTML("waarde:  "+ description + "</br>" + "perceel nummer:  "+ perceel + "</br>" + "sectie:  " + sectie)
     .addTo(map);
 });
-
-// ================================//
-// 3D!  
-var status = '';
-// 3D layers!!!
-var drieD = d3.select('body');
-drieD.on("keypress", function(){
-  if(d3.event.key == 3 && status == ''){
-    status = '3d';
-    goDrieD();
-  } else if (d3.event.key == 3 && status == '3d'){
-    status = '';
-    goFlat();
-  }
-});
-
-function goDrieD(){
-  map.setPaintProperty('pand', 'fill-extrusion-height', 10);
-  map.setPaintProperty('pand', 'fill-extrusion-opacity', 0.8);
-};
-
-function goFlat(){
-  map.setPaintProperty('pand', 'fill-extrusion-height', 0);
-  map.setPaintProperty('pand', 'fill-extrusion-opacity', 1);
-};

@@ -38,7 +38,7 @@ html, body {
   bottom:0px;
   width: 100%;
   background-color: #f4f4f4;
-  cursor: move;
+  cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -110,52 +110,3 @@ rect{
     100% { transform: rotate(360deg); }
 }
 
-/*--------------------------------------------------------*/
-
-.toggle-switch {
-  background: #ccc;
-  width: 80px;
-  height: 30px;
-  overflow: hidden;
-  border-radius: 3px;
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0 15px;
-  cursor: pointer;
-}
-
-#toggler{
-    background-color: blue;
-    display: block;
-    width: 40px;
-    height: 30px;
-    background-color: rgb(0,155,0);
-    border-radius: 3px;
-    margin-left: -3px;
-    margin-right: -3px;
-    transition: all 1s ease-in-out transform 2s;
-}
-
-.active{
-  color: rgb(0,155,0);
-  font-weight: bold;
-  padding: 0px !important;
-}
-
-#toggle-label1, #toggle-label2 {
-  display: inline-block;
-  line-height: 30px;
-  padding:4px 8px;
-}
-
-
-.left{
-  margin-left: -3px;
-  float:left;
-  transition: all 1s ease-in-out transform 2s;
-}
-.right{
-  margin-right: -3px;
-  float: right;
-  transition: all 1s ease-in-out transform 2s;
-}

@@ -15,7 +15,7 @@
             "type": "vector",
             "scheme": "tile",
             "tiles": [
-                "http://localhost:6767/perceel/{z}/{x}/{y}.pbf" 
+                "https://vt1.maps.geocoders.nl/vt_nlextract/tiles/perceel/{z}/{x}/{y}.pbf" 
             ]
         }
     },
