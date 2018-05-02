@@ -15,14 +15,7 @@
             "type": "vector",
             "scheme": "tile",
             "tiles": [
-                "http://176.9.0.106:6767/perceel/{z}/{x}/{y}.pbf"
-            ]
-        },
-        "tegel_cache": {
-            "type": "vector",
-            "scheme": "tile",
-            "tiles": [
-                "https://vt1.maps.geocoders.nl/vt_nlextract/tiles/perceel/{z}/{x}/{y}.pbf"
+                "http://localhost:6767/perceel/{z}/{x}/{y}.pbf"
             ]
         }
     },
@@ -36,7 +29,7 @@
         },
         {
             "id": "perceel",
-            "source":"tegel_cache",
+            "source":"tegel_server",
             "source-layer": "perceel",
             "type": "fill",
             "paint":{
@@ -47,7 +40,7 @@
         },
         {
             "id": "perceel-select",
-            "source": "tegel_cache",
+            "source": "tegel_server",
             "source-layer": "perceel",
             "type": "fill",
             "filter": [
